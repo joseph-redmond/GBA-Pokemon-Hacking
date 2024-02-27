@@ -86,9 +86,10 @@ class SReader():
         return self.defines[key]
     
   
-    def exp(self, expr={}):
+    def exp(self, expr=None):
         '''Evaluates a mathematical expression, all defines can be passed
         as varrefs in the expr variable. Returns always an integer'''
+        expr = {} if expr is None else expr
         value = mathexp.eval_expr(expr, self.defines)
         if value == None:
             raise Exception("Error in .s file, could not evaluate: %s."%expr)

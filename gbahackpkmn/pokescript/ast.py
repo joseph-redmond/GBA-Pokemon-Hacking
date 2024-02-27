@@ -207,7 +207,8 @@ class ASTResourceMovement(ASTNode):
     
 
 class ASTCommand(ASTNode):
-    def __init__(self, code, args=[]):
+    def __init__(self, code, args=None):
+        args = [] if args is None else args
         self.code = code
         self.args = args
     

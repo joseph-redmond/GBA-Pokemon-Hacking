@@ -1071,7 +1071,7 @@ def filter_scanline(type, line, fo, prev=None):
     return out
 
 
-def from_array(a, mode=None, info={}):
+def from_array(a, mode=None, info=None):
     """Create a PNG :class:`Image` object from a 2- or 3-dimensional array.
     One application of this function is easy PIL-style saving:
     ``png.from_array(pixels, 'L').save('foo.png')``.
@@ -1154,6 +1154,7 @@ def from_array(a, mode=None, info={}):
     this must be true when mode is ``'L'`` or ``'LA'`` and false when
     mode is ``'RGB'`` or ``'RGBA'``.
     """
+    info = {} if info is None else info
 
     # We abuse the *info* parameter by modifying it.  Take a copy here.
     # (Also typechecks *info* to some extent).
