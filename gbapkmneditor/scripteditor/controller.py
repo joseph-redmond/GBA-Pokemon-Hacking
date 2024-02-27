@@ -122,8 +122,7 @@ class Controller():
 
     def testScript(self):
         '''Try to compile the script in the sourceview.'''
-        sg = self._compileandtest()
-        if sg != None:
+        if (sg := self._compileandtest()) != None:
             showInfo(self.mainview, "Test OK, the script contains no errors.")
         
         
@@ -147,8 +146,7 @@ class Controller():
     
     def burnScript(self):
         '''Compiles the source, if succesful updates the in-game scripts.'''
-        sg = self._compileandtest()
-        if sg == None:
+        if (sg := self._compileandtest()) == None:
             return
         
         try:

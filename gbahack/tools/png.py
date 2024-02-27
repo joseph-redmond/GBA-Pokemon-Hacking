@@ -619,8 +619,7 @@ class Writer:
             if len(x) > 3:
                 t.append(x[3])
         p = tostring(p)
-        t = tostring(t)
-        if t:
+        if t := tostring(t):
             return p,t
         return p,None
 
@@ -1929,8 +1928,7 @@ class Reader:
             meta[attr] = getattr(self, attr)
         meta['size'] = (self.width, self.height)
         for attr in 'gamma transparent background'.split():
-            a = getattr(self, attr, None)
-            if a is not None:
+            if (a := getattr(self, attr, None)) is not None:
                 meta[attr] = a
         if self.plte:
             meta['palette'] = self.palette()
@@ -3565,8 +3563,7 @@ def read_pam_header(infile):
     # Unlike PBM, PGM, and PPM, we can read the header a line at a time.
     header = dict()
     while True:
-        l = infile.readline().strip()
-        if l == strtobytes('ENDHDR'):
+        if (l := infile.readline().strip()) == strtobytes('ENDHDR'):
             break
         if not l:
             raise EOFError('PAM ended prematurely')

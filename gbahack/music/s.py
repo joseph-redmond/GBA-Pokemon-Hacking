@@ -89,8 +89,7 @@ class SReader():
     def exp(self, expr={}):
         '''Evaluates a mathematical expression, all defines can be passed
         as varrefs in the expr variable. Returns always an integer'''
-        value = mathexp.eval_expr(expr, self.defines)
-        if value == None:
+        if (value := mathexp.eval_expr(expr, self.defines)) == None:
             raise Exception("Error in .s file, could not evaluate: %s."%expr)
         return int(value)
   

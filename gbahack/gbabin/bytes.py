@@ -86,8 +86,7 @@ class ByteArrayReader():
         offset = 0
         results = []
         while True:
-            offset = self.find(findbytes, offset)
-            if offset == -1:
+            if (offset := self.find(findbytes, offset)) == -1:
                 break
             else:
                 results.append(offset)

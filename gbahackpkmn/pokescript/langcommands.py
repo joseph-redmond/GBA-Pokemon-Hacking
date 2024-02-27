@@ -187,9 +187,8 @@ class Alias(CodeCommand):
                 continue
             
             paramtype    = param.ptype
-            paramdefault = param.defaultvalue
             
-            if paramdefault == None:
+            if (paramdefault := param.defaultvalue) == None:
                 valuestoappend = [''] * len(ParamType.rewrite(paramtype, 0))
             elif paramtype == ParamType.command:
                 currentparamindex = paramindex + 1

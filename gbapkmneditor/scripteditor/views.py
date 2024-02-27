@@ -267,8 +267,7 @@ class leftwidget(QWidget):
         This method informs the controller which script was selected.'''
         selectedscriptstructs = []
         for selecteditem in self.scriptselect.selectedItems():
-            scriptstruct = selecteditem.data(Qt.UserRole, 0)
-            if scriptstruct != None:
+            if (scriptstruct := selecteditem.data(Qt.UserRole, 0)) != None:
                 selectedscriptstructs.append(scriptstruct)
         
         if len(selectedscriptstructs) > 0:

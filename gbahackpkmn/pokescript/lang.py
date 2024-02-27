@@ -198,8 +198,7 @@ class ScriptLang():
 
 
 def stripDescription(line):
-    descriptionstart = line.find("'")
-    if descriptionstart != -1:
+    if (descriptionstart := line.find("'")) != -1:
         return line[descriptionstart+1:]
     else:
         return None

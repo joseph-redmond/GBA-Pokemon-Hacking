@@ -72,8 +72,7 @@ class PokeScriptHighlighter(QSyntaxHighlighter):
         except:
             pass
         
-        index = text.find("'", offset)
-        if index == -1:
+        if (index := text.find("'", offset)) == -1:
             return text
         elif index>0 and text[index-1] == "\\":
             return self.removecomment(text, index+1)
