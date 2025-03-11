@@ -13,6 +13,7 @@ from gbahackpkmn.overworld import OverWorldSprites
 from gbapkmneditor.tools import natsort
 from gbapkmneditor.gui.messages import showInfo, showError
 from gbapkmneditor.scripteditor.views import MainView
+from security import safe_command
 
 pokescriptdocuri = "https://github.com/TheUnknownCylon/GBA-Pokemon-Hacking/blob/master/docs/pokescript.md#readme"
 
@@ -259,7 +260,7 @@ class Controller():
             return
         try:
             command = [x if x != "%u" else self.rom.filename for x in shlex.split(self.config['emulator'])]
-            subprocess.Popen(command)
+            safe_command.run(subprocess.Popen, command)
         except Exception as e:
             showError(self.mainview, "Could not start the emulator:\n"+repr(e))
         
